@@ -30,13 +30,13 @@ assert stdenv.hostPlatform.isDarwin -> !x11Support;
 assert stdenv.hostPlatform.isDarwin -> !waylandSupport;
 rustPlatform.buildRustPackage rec {
   pname = "espanso";
-  version = "2.2-unstable-2024-05-14";
+  version = "2.2-unstable-2025-01-02";
 
   src = fetchFromGitHub {
     owner = "espanso";
     repo = "espanso";
-    rev = "8daadcc949c35a7b7aa20b7f544fdcff83e2c5f7";
-    hash = "sha256-4MArENBmX6tDVLZE1O8cuJe7A0R+sLZoxBkDvIwIVZ4=";
+    rev = "61aed0da285cd84a4d17a1cb4f2dd7ff8da95e66";
+    hash = "1jd9frrfzqkg039f26vp8ms3d2xjh7hvhqn7awc12f6fkqfmp5vy";
   };
 
   cargoLock = {
