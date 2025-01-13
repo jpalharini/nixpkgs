@@ -36,14 +36,12 @@ rustPlatform.buildRustPackage rec {
     owner = "espanso";
     repo = "espanso";
     rev = "61aed0da285cd84a4d17a1cb4f2dd7ff8da95e66";
-    hash = "1jd9frrfzqkg039f26vp8ms3d2xjh7hvhqn7awc12f6fkqfmp5vy";
+    hash = "sha256-fpdbHZ7OOBEYV8diuOGBsos2dEV3G+HSAG/i73J2qck=";
   };
 
   cargoLock = {
     lockFile = ./Cargo.lock;
-    outputHashes = {
-      "yaml-rust-0.4.6" = "sha256-wXFy0/s4y6wB3UO19jsLwBdzMy7CGX4JoUt5V6cU7LU=";
-    };
+    outputHashes = {};
   };
 
   nativeBuildInputs = [
