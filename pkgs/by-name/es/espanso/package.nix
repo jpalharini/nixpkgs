@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   coreutils,
   fetchFromGitHub,
   rustPlatform,
@@ -11,12 +12,13 @@
   libXtst,
   libnotify,
   libxkbcommon,
+  libpng,
   openssl,
   xclip,
   xdotool,
   setxkbmap,
   wl-clipboard,
-  wxGTK32,
+#wxGTK32,
   makeWrapper,
   stdenv,
   waylandSupport ? false,
@@ -30,13 +32,13 @@ assert stdenv.hostPlatform.isDarwin -> !x11Support;
 assert stdenv.hostPlatform.isDarwin -> !waylandSupport;
 rustPlatform.buildRustPackage rec {
   pname = "espanso";
-  version = "2.2-unstable-2025-01-02";
+  version = "2.2-unstable-2025-01-14";
 
   src = fetchFromGitHub {
     owner = "espanso";
     repo = "espanso";
-    rev = "61aed0da285cd84a4d17a1cb4f2dd7ff8da95e66";
-    hash = "sha256-fpdbHZ7OOBEYV8diuOGBsos2dEV3G+HSAG/i73J2qck=";
+    rev = "91f48d9763948e49c0c7682eecb5108d019dd333";
+    hash = "sha256-DT7RDshZMDSPQxeqQYy7RiCQeLdYvMZ/W0N6/C7dfEw=";
   };
 
   cargoLock = {
@@ -46,9 +48,10 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [
     extra-cmake-modules
+    libpng
     pkg-config
     makeWrapper
-    wxGTK32
+    #wxGTK32
   ];
 
   # Ref: https://github.com/espanso/espanso/blob/78df1b704fe2cc5ea26f88fdc443b6ae1df8a989/scripts/build_binary.rs#LL49C3-L62C4
@@ -69,7 +72,7 @@ rustPlatform.buildRustPackage rec {
 
   buildInputs =
     [
-      wxGTK32
+      #wxGTK32
     ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       openssl
