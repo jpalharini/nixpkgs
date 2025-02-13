@@ -17,23 +17,23 @@
 
 buildPythonPackage rec {
   pname = "hahomematic";
-  version = "2025.1.5";
+  version = "2025.2.5";
   pyproject = true;
 
-  disabled = pythonOlder "3.12";
+  disabled = pythonOlder "3.13";
 
   src = fetchFromGitHub {
     owner = "SukramJ";
     repo = "hahomematic";
     tag = version;
-    hash = "sha256-MEGAfpA7TMscCitAjw66lXADrc/Jb1i8REV3V17YZK8=";
+    hash = "sha256-cBj5dwCGJ5++qAZ0JxlqIQKm/Lw3vWVH1DBVVDvkFco=";
   };
 
   __darwinAllowLocalNetworking = true;
 
   postPatch = ''
     substituteInPlace pyproject.toml \
-      --replace-fail "setuptools==75.6.0" "setuptools" \
+      --replace-fail "setuptools==75.8.0" "setuptools" \
   '';
 
   build-system = [ setuptools ];
